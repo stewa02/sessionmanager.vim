@@ -28,6 +28,15 @@ augroup AddedSessionEvents
 augroup END
 ```
 
+If you for some reason want to load a session manually you can set up a mapping
+to the `RestoreSession` command, even if I don't see why you should want to do
+that.
+
+That could look something like:
+```vim
+nnoremap <leader>r :RestoreSession
+```
+
 ## Inspiration
 Heavy inspiration was taken from:
 
