@@ -38,7 +38,7 @@ that.
 That could look something like:
 ```vim
 nnoremap <leader>r :RestoreSession
-``
+```
 
 At the moment the plugin is not configurable. Maybe this will change with my 
 personal usage or preferences.
