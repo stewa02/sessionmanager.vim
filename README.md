@@ -13,7 +13,10 @@ solution to work across different platforms and to better suit my preferences.
 ## Usage
 After copying the plugin file into the plugin folder, the plugin will 
 automatically start managing your session. The `.vim` or the `vimfiles` folder
-has to exist, because the plugin saves the session into this directory.
+has to exist, because the plugin saves the session into this directory. It 
+saves you session when you leave the editor into `$VIMDIR/session.vim` and 
+reloads that session on startup. All new files from the command line (and 
+buffers that are not associated with any window) will be opened into a new tab.
 
 If you want to save the session manually you can use the command `SaveSession`
 and if you want to set an autocommand to another event you can do that as well
@@ -35,7 +38,10 @@ that.
 That could look something like:
 ```vim
 nnoremap <leader>r :RestoreSession
-```
+``
+
+At the moment the plugin is not configurable. Maybe this will change with my 
+personal usage or preferences.
 
 ## Inspiration
 Heavy inspiration was taken from:
