@@ -20,6 +20,14 @@ and if you want to set an autocommand to another event you can do that as well
 (by default the session is only saved when the leave event is triggered, this 
 can be a problem if vim closes unexpectedly).
 
+That could look something like:
+``vim
+augroup AddedSessionEvents
+    autocmd!
+    autocmd BufEnter * :SaveSession
+augroup END
+``
+
 ## Inspiration
 Heavy inspiration was taken from:
 
@@ -28,4 +36,5 @@ Heavy inspiration was taken from:
 
 ## TODO
  - Not open empty buffers in new tabs on startup
+ - Automatically create necessary folders, if they do not already exist
 
