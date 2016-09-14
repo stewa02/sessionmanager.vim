@@ -21,12 +21,12 @@ and if you want to set an autocommand to another event you can do that as well
 can be a problem if vim closes unexpectedly).
 
 That could look something like:
-``vim
+```vim
 augroup AddedSessionEvents
     autocmd!
     autocmd BufEnter * :SaveSession
 augroup END
-``
+```
 
 ## Inspiration
 Heavy inspiration was taken from:
