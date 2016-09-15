@@ -1,0 +1,67 @@
+*sessionmanager.txt*  A simple autoload-autosave session manager.
+
+Author:  stewa02 <stewatwo@cpan.org>
+License: This plugin is distributed under the Vim-license (see |license|)
+
+INTRODUCTION                                    *sessionmanager*
+
+sessionmanager.vim is a simple session management plugin for vim. It saves one,
+and only one session into your `~/.vim` directory when you close the editor and 
+loads the previous session in once you open vim again.
+
+COMMANDS                                        *sessionmanager-commands*
+
+These commands are local to the buffers in which they work (generally, buffers
+that are part of Git repositories).
+
+                                                *sessionmanager-:SaveSession*
+:SaveSession            Saves the current session. Is called by an
+                        |autocommand| at |VimLeave|.
+
+                                                *sessionmanager-:RestoreSession*
+:RestoreSession         Loads the file `$HOME/.vim/session.vim` with an 
+                        |autocommand| at |VimEnter|.
+
+USAGE                                           *sessionmanager-usage*
+
+After copying the plugin file into the plugin folder, the plugin will 
+automatically start managing your session. The `.vim` or the `vimfiles` folder
+has to exist, because the plugin saves the session into this directory. It 
+saves you session when you leave the editor into `$VIMDIR/session.vim` and 
+reloads that session on startup. All new files from the command line (and 
+buffers that are not associated with any window) will be opened into a new tab.
+
+If you want to save the session manually you can use the command `SaveSession`
+and if you want to set an autocommand to another event you can do that as well
+(by default the session is only saved when the leave event is triggered, this 
+can be a problem if vim closes unexpectedly).
+
+That could look something like:
+
+>
+    augroup AddedSessionEvents
+        autocmd!
+        autocmd BufEnter * :SaveSession
+    augroup END
+<
+
+If you for some reason want to load a session manually you can set up a mapping
+to the `RestoreSession` command, even if I don't see why you should want to do
+that.
+
+That could look something like:
+
+>
+    nnoremap <leader>r :RestoreSession
+<
+
+At the moment the plugin is not configurable. Maybe this will change with my 
+personal usage or preferences.
+
+ABOUT                                           *sessionmanager-about*
+
+Grab the latest version or report a bug on GitHub:
+
+http://github.com/stewa02/sessionmanager.vim
+
+ vim:tw=78:et:ft=help:norl:
