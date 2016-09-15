@@ -51,5 +51,5 @@ Heavy inspiration was taken from:
 
 ## TODO
  - Not open empty buffers in new tabs on startup
- - Automatically create necessary folders, if they do not already exist
+ - ~~Automatically create necessary folders, if they do not already exist~~
 

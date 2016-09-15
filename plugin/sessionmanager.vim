@@ -1,5 +1,5 @@
 " Small session management plugin.
-" Last change:   13.09.2016
+" Last change:   15.09.2016
 " Maintainer:    stewa02 <stewatwo@cpan.org>
 " License:       This plugin is distributed under the Vim-license.
 " Thanks to:     markw (stackoverflow):
@@ -13,8 +13,7 @@ if exists("g:loaded_sessionmanager") || v:version < 703
 endif
 let g:loaded_sessionmanager = 1
 
-" Save configuration and replace them with defaults
-" (line-continuation)
+" Save configuration and replace them with defaults (line-continuation)
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -22,6 +21,19 @@ set cpo&vim
 " systems that use the forward slash "/" instead of the backslash "\". This
 " option uses the forward slash on all systems inside the session files.
 set sessionoptions+=unix,slash
+
+" Creates a personal directory for your vim files. It creates the folder 
+" ~/.vim on *nix and ~/vimfiles on Microsoft Windows. 
+" Reference: http://vimdoc.sourceforge.net/htmldoc/options.html#vimfiles
+if has("win32") || has("win16")
+    if !isdirectory($HOME."/vimfiles")
+        call mkdir($HOME."/vimfiles", "p", 0755)
+    endif
+elseif has("unix") || has("linux") || has("mac") || has("macunix")
+    if !isdirectory($HOME."/.vim")
+        call mkdir($HOME."/.vim", "p", 0755)
+    endif
+endif
 
 " Function that determines if a certain buffer is active in any of the open
 " tabs. This is necessary, because bufwinnr() only returns the correct answer
