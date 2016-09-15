@@ -11,8 +11,8 @@ loads the previous session in once you open vim again.
 
 COMMANDS                                        *sessionmanager-commands*
 
-These commands are local to the buffers in which they work (generally, buffers
-that are part of Git repositories).
+All commands are glabally available and mapped to autocommands as documented
+below.
 
                                                 *sessionmanager-:SaveSession*
 :SaveSession            Saves the current session. Is called by an
