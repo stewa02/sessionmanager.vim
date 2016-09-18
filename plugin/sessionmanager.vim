@@ -82,14 +82,19 @@ function! s:RestoreSess()
             endfor
         endif
     else
-        echom "No session file to load!"
+        " If there is no session file do nothing and inform the user using 
+        " ErrorMsg highlighting without requiring the user to press enter at
+        " startup (making the error less special).
+        echohl ErrorMsg
+        echomsg "No session file to load!"
+        echohl None
     endif
 endfunction
 
 " Create command if they don't exist
 if !exists(":SaveSession") && !exists(":RestoreSession")
-    command! SaveSession    :call <SID>SaveSess()
-    command! RestoreSession :call <SID>RestoreSess()
+    command! SaveSession    call <SID>SaveSess()
+    command! RestoreSession call <SID>RestoreSess()
 else
     echoerr "No command created, because they already exists!"
 endif
@@ -97,8 +102,8 @@ endif
 " Set up autocommands for autosave and autoload
 augroup session
 autocmd!
-autocmd VimLeave * :SaveSession
-autocmd VimEnter * :RestoreSession
+autocmd VimLeave * SaveSession
+autocmd VimEnter * RestoreSession
 augroup END
 
 " Restore user settings

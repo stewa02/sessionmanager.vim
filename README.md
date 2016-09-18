@@ -27,7 +27,7 @@ That could look something like:
 ```vim
 augroup AddedSessionEvents
     autocmd!
-    autocmd BufEnter * :SaveSession
+    autocmd BufEnter * SaveSession
 augroup END
 ```
 
@@ -37,7 +37,7 @@ that.
 
 That could look something like:
 ```vim
-nnoremap <leader>r :RestoreSession
+nnoremap <leader>r :RestoreSession<CR>
 ```
 
 At the moment the plugin is not configurable. Maybe this will change with my 
@@ -52,4 +52,5 @@ Heavy inspiration was taken from:
 ## TODO
  - Not open empty buffers in new tabs on startup
  - ~~Automatically create necessary folders, if they do not already exist~~
+ - ~~Make "No session file" error less fatal~~
 

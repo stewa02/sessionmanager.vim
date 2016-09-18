@@ -9,8 +9,8 @@ CONTENTS                                         *sessionmanager-contents*
 
 1. Introduction           |sessionmanager-introduction|
 2. Commands               |sessionmanager-commands|
-  2.1 SaveSession         |sessionmanager-:SaveSession|
-  2.2 RestoreSession      |sessionmanager-:RestoreSession|
+    2.1 SaveSession       |sessionmanager-:SaveSession|
+    2.2 RestoreSession    |sessionmanager-:RestoreSession|
 3. Usage                  |sessionmanager-usage|
 4. About                  |sessionmanager-about|
 
@@ -22,7 +22,7 @@ loads the previous session in once you open vim again.
 
 COMMANDS                                        *sessionmanager-commands*
 
-All commands are glabally available and mapped to autocommands as documented
+All commands are globally available and mapped to autocommands as documented
 below.
 
                                                 *sessionmanager-:SaveSession*
