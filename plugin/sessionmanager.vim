@@ -27,11 +27,11 @@ set sessionoptions+=unix,slash
 " Reference: http://vimdoc.sourceforge.net/htmldoc/options.html#vimfiles
 if has("win32") || has("win16")
     if !isdirectory($HOME."/vimfiles")
-        call mkdir($HOME."/vimfiles", "p", 0755)
+        call mkdir($HOME."/vimfiles", "p")
     endif
 elseif has("unix") || has("linux") || has("mac") || has("macunix")
     if !isdirectory($HOME."/.vim")
-        call mkdir($HOME."/.vim", "p", 0755)
+        call mkdir($HOME."/.vim", "p")
     endif
 endif
 
@@ -63,21 +63,26 @@ endfunction
 " The magic after the source command is necessary to open all new files with
 " which vim was called from the command line.
 function! s:RestoreSess()
-    if has("win32") || has("win16")
-        execute "source ~/vimfiles/session.vim"
-    elseif has("unix") || has("linux") || has("mac") || has("macunix")
-        execute "source ~/.vim/session.vim"
+    if !empty(glob("~/.vim/session.vim")) || 
+                \ !empty(glob("~/vimfiles/session.vim"))
+        if has("win32") || has("win16")
+            execute "source ~/vimfiles/session.vim"
+        elseif has("unix") || has("linux") || has("mac") || has("macunix")
+            execute "source ~/.vim/session.vim"
+        else
+            echoerr "Operating system is not supported!"
+            return
+        endif
+        if bufexists(1)
+            for s:bufnr in range(1, bufnr("$"))
+                if s:BufInTab(s:bufnr)
+                    tabnew
+                    execute ":b".s:bufnr
+                endif
+            endfor
+        endif
     else
-        echoerr "Operating system is not supported!"
-        return
-    endif
-    if bufexists(1)
-        for s:bufnr in range(1, bufnr("$"))
-            if s:BufInTab(s:bufnr)
-                tabnew
-                execute ":b".s:bufnr
-            endif
-        endfor
+        echom "No session file to load!"
     endif
 endfunction
 

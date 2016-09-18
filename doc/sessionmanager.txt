@@ -1,9 +1,20 @@
-*sessionmanager.txt*  A simple autoload-autosave session manager.
+*sessionmanager.txt*  A simple autosave-autoload vim session manager.           
+
+                                                 *sessionmanager*
 
 Author:  stewa02 <stewatwo@cpan.org>
 License: This plugin is distributed under the Vim-license (see |license|)
 
-INTRODUCTION                                    *sessionmanager*
+CONTENTS                                         *sessionmanager-contents*
+
+1. Introduction           |sessionmanager-introduction|
+2. Commands               |sessionmanager-commands|
+  2.1 SaveSession         |sessionmanager-:SaveSession|
+  2.2 RestoreSession      |sessionmanager-:RestoreSession|
+3. Usage                  |sessionmanager-usage|
+4. About                  |sessionmanager-about|
+
+INTRODUCTION                                    *sessionmanager-introduction*
 
 sessionmanager.vim is a simple session management plugin for vim. It saves one,
 and only one session into your `~/.vim` directory when you close the editor and 
