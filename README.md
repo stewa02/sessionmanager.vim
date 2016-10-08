@@ -51,6 +51,7 @@ Heavy inspiration was taken from:
 
 ## TODO
  - Not open empty buffers in new tabs on startup
+ - ~~Show which session (last modified timestamp) was loaded after startup~~
  - ~~Automatically create necessary folders, if they do not already exist~~
  - ~~Make "No session file" error less fatal~~
 
