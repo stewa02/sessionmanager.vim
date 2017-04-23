@@ -73,7 +73,8 @@ function! s:RestoreSess()
     if !empty(glob("~/.vim/session.vim")) ||
      \ !empty(glob("~/vimfiles/session.vim"))
         " Get argument list before loading session
-        let l:arglist = argv()
+        let l:arglist = []
+        argdo call add(l:arglist, expand("%:p"))
         if has("win32") || has("win16")
             let l:time = strftime("%Y %b %d %X",getftime($HOME."/vimfiles/session.vim"))
             execute "source ~/vimfiles/session.vim"
