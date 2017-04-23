@@ -72,6 +72,8 @@ endfunction
 function! s:RestoreSess()
     if !empty(glob("~/.vim/session.vim")) ||
      \ !empty(glob("~/vimfiles/session.vim"))
+        " Get argument list before loading session
+        let l:arglist = argv()
         if has("win32") || has("win16")
             let l:time = strftime("%Y %b %d %X",getftime($HOME."/vimfiles/session.vim"))
             execute "source ~/vimfiles/session.vim"
@@ -82,13 +84,23 @@ function! s:RestoreSess()
             echoerr "Operating system is not supported!"
             return
         endif
-        if bufexists(1)
-            for l:bufnr in range(1, bufnr("$"))
-                if s:BufInTab(l:bufnr)
-                    tabnew
-                    execute ":b".l:bufnr
-                endif
+
+        if !exists("g:sessionmanager_loadall")
+            " Load arglist into seperate tabs
+            for l:args in l:arglist
+                tabnew
+                execute ":buffer ".l:args
             endfor
+        else
+            " Load all hidden buffers into seperate tabs
+            if bufexists(1)
+                for l:bufnr in range(1, bufnr("$"))
+                    if s:BufInTab(l:bufnr)
+                        tabnew
+                        execute ":b".l:bufnr
+                    endif
+                endfor
+            endif
         endif
     endif
 
