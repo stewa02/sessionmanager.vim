@@ -1,6 +1,6 @@
 " Small session management plugin.
-" Last change:   23.04.2017
-" Version:       V1.2.1
+" Last change:   24.04.2017
+" Version:       V1.2.2
 " Maintainer:    stewa02 <stewatwo@cpan.org>
 " License:       This plugin is distributed under the Vim-license.
 
@@ -70,7 +70,9 @@ function! s:RestoreSess()
      \ !empty(glob("~/vimfiles/session.vim"))
         " Get argument list before loading session
         let l:arglist = []
-        argdo call add(l:arglist, expand("%:p"))
+        if !empty(argv())
+            argdo call add(l:arglist, expand("%:p"))
+        endif
         if has("win32") || has("win16")
             let l:time = strftime("%Y %b %d %X",getftime($HOME."/vimfiles/session.vim"))
             execute "source ~/vimfiles/session.vim"
