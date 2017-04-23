@@ -1,12 +1,8 @@
 " Small session management plugin.
-" Last change:   08.10.2016
-" Version:       V1.1
+" Last change:   23.04.2017
+" Version:       V1.2.1
 " Maintainer:    stewa02 <stewatwo@cpan.org>
 " License:       This plugin is distributed under the Vim-license.
-" Thanks to:     markw (stackoverflow):
-"                https://stackoverflow.com/questions/5142099/how-to-auto-save-vim-session-on-quit-and-auto-reload-on-start-including-split-wi/6052704
-"                LCD 47 (Google Groups):
-"                https://groups.google.com/forum/#!topic/vim_use/0jaFyy5LR7A
 
 " Do not load, if loaded already
 if exists("g:loaded_sessionmanager") || v:version < 703
